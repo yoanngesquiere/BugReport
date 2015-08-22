@@ -1,9 +1,10 @@
 <?php
-namespace BugReport\Bundle\AppBundle\Entity;
+namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\IssueRepository")
  * @ORM\Table(name="issue")
  */
 class Issue
@@ -55,7 +56,8 @@ class Issue
     protected $closedDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Software", inversedBy="id")
+     * @ORM\JoinColumn(name="software_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $software;
 

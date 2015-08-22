@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    Stats by app
+
+    {{ form(app_selector) }}
+
+    {% if stats|length > 0 %}
+        <table>
+            <tr>
+                <td>
+                    Tracker
+                </td>
+                <td>
+                    Priority
+                </td>
+                <td>
+                    # of issues
+                </td>
+            </tr>
+        {% for stat in stats %}
+            <tr>
+                <td>
+                    {{ stat.tracker }}
+                </td>
+                <td>
+                    {{ stat.priority }}
+                </td>
+                <td>
+                    {{ stat.count_i }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+
+{% endblock %}

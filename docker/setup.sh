@@ -14,7 +14,8 @@ cd /var/www/html/
 
 # Clear cache avoiding permission problems in the new container
 rm -rf app/cache
-rm app/config/parameters.yml
+
+rm -f app/config/parameters.yml
 
 # Classic symfony install
 composer install

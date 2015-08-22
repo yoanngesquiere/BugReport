@@ -1,22 +1,21 @@
 <?php
 
-namespace BugReport\Bundle\AppBundle\Entity;
+namespace AppBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 class IssueRepository extends EntityRepository
 {
 
-    public function getNbIssuesByPriorityTrackerForAnAppAndDate($app, $date)
+    public function findNbIssuesByPriorityTrackerForAnAppAndDate($software, $date)
     {
         $qb = $this->_em->createQueryBuilder();
-        $qb->select('i.tracker, count(i)')
-            ->from('BugReportAppBundle:Issue', 'i')
-            ->where('i.software = :app')
+        $qb->select('i.tracker, i.priority, count(i) AS count_i')
+            ->from('AppBundle:Issue', 'i')
+            ->where('i.software = :software')
             ->addGroupBy('i.tracker')
             ->addGroupBy('i.priority')
-            ->setParameter('app', $app);
+            ->setParameter('software', $software);
         return $qb->getQuery()
             ->getResult();
     }
-
 }
