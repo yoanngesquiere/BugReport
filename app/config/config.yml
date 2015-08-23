@@ -82,3 +82,5 @@ swiftmailer:
 app:
   open_statuses: []
   closed_statuses: []
+  priority_groups:
+    - { name: normal, use_value: 4, values: [5, 4, 3] }
