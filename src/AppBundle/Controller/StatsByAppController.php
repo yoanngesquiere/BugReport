@@ -39,12 +39,29 @@ class StatsByAppController extends Controller {
             $software = $entity->getSoftware()->getId();
         }
 
-
         $stats = $em->getRepository('AppBundle:Issue')->findNbIssuesByPriorityTrackerForAnAppAndDate($software, null);
+        $totals = array();
+        $totals['tracker'] = array();
+        $totals['priority'] = array();
+        $totals['all'] = 0;
+
+        foreach ($stats as $stat) {
+            if (!isset($totals['tracker'][$stat['tracker']])) {
+                $totals['tracker'][$stat['tracker']] = 0;
+            }
+            if (!isset($totals['priority'][$stat['priority']])) {
+                $totals['priority'][$stat['priority']] = 0;
+            }
+            $totals['tracker'][$stat['tracker']] += $stat['count_i'];
+            $totals['priority'][$stat['priority']] += $stat['count_i'];
+            $totals['all'] += $stat['count_i'];
+        }
 
         return array(
-            'stats' => $stats,
-            'app_selector' => $form->createView()
+            'stats'         => $stats,
+            'app_selector'  => $form->createView(),
+            'software'      => $entity->getSoftware(),
+            'totals'        => $totals
         );
     }
 }

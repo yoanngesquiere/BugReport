@@ -1,0 +1,12 @@
+tracker:
+  5: Incident
+  6: Service
+  7: Evolution
+  10: Problem
+
+priority:
+  7: Blocker
+  6: Urgent
+  5: High
+  4: Normal
+  3: Low

@@ -9,6 +9,9 @@
         <table>
             <tr>
                 <td>
+                    Application
+                </td>
+                <td>
                     Tracker
                 </td>
                 <td>
@@ -18,8 +21,29 @@
                     # of issues
                 </td>
             </tr>
-        {% for stat in stats %}
+            {% for stat in stats %}
+                {% if previous is defined %}
+                    {% if previous.tracker != stat.tracker %}
+                        <tr>
+                            <td>
+                                {{ software.name }}
+                            </td>
+                            <td>
+                                {{ previous.tracker }}
+                            </td>
+                            <td>
+                                Sub-total
+                            </td>
+                            <td>
+                                {{ totals['tracker'][previous.tracker] }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endif %}
             <tr>
+                <td>
+                    {{ software.name }}
+                </td>
                 <td>
                     {{ stat.tracker }}
                 </td>
@@ -30,7 +54,52 @@
                     {{ stat.count_i }}
                 </td>
             </tr>
-        {% endfor %}
+                {% set previous = stat %}
+            {% endfor %}
+            <tr>
+                <td>
+                    {{ software.name }}
+                </td>
+                <td>
+                    {{ stats|last.tracker }}
+                </td>
+                <td>
+                    Sub-total
+                </td>
+                <td>
+                    {{ totals['tracker'][stats|last.tracker] }}
+                </td>
+            </tr>
+            {% for priority, total in totals['priority'] %}
+            <tr>
+                <td>
+                    {{ software.name }}
+                </td>
+                <td>
+                    ALL
+                </td>
+                <td>
+                    {{ priority }}
+                </td>
+                <td>
+                    {{ total }}
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    {{ software.name }}
+                </td>
+                <td>
+                    ALL
+                </td>
+                <td>
+                    ALL
+                </td>
+                <td>
+                    {{ totals['all'] }}
+                </td>
+            </tr>
         </table>
     {% endif %}
 
