@@ -21,6 +21,11 @@ class Software {
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Issue", mappedBy="software")
+     */
+    protected $issues;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -30,10 +35,13 @@ class Software {
 
     /**
      * @param mixed $id
+     *
+     * @return Software
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -46,9 +54,31 @@ class Software {
 
     /**
      * @param mixed $name
+     *
+     * @return Software
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIssues()
+    {
+        return $this->issues;
+    }
+
+    /**
+     * @param mixed $issues
+     *
+     * @return Software
+     */
+    public function setIssues($issues)
+    {
+        $this->issues = $issues;
+        return $this;
     }
 }

@@ -56,7 +56,7 @@ class Issue
     protected $closedDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Software", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Software", inversedBy="issues")
      * @ORM\JoinColumn(name="software_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $software;

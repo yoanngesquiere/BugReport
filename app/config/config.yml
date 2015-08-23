@@ -78,3 +78,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+app:
+  open_statuses: []
+  closed_statuses: []
