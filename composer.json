@@ -2,6 +2,7 @@
     "name": "ygesquiere/bug-report",
     "license": "proprietary",
     "type": "project",
+    "description": "App to display stats about bugs imported from another app",
     "autoload": {
         "psr-4": {
             "": "src/",
