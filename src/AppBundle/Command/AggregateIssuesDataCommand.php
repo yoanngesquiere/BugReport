@@ -42,7 +42,8 @@ class AggregateIssuesDataCommand extends ContainerAwareCommand
         $oldestIssue = $issueRepository->getOldestIssueCreated();
         $year = $oldestIssue->getCreationDate()->format('Y');
 
-        for ($year;$year <= date('Y'); $year++) {
+        $currentYear = date('Y');
+        for ($year;$year <= $currentYear; $year++) {
             if ($inputYear && $inputYear != $year) {
                 continue;
             }

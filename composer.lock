@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "715267c279ed0f02eca68402fdb474a7",
+    "hash": "e764f0a3830e9eebd60f59aa6da28383",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -955,7 +955,7 @@
         },
         {
             "name": "oro/doctrine-extensions",
-            "version": "dev-master",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orocrm/doctrine-extensions.git",
@@ -1674,9 +1674,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "oro/doctrine-extensions": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
